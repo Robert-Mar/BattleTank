@@ -1,0 +1,15 @@
+##########################
+# Unreal Generated Files #
+##########################
+Intermediate
+Saved
+Binaries
+
+
+######################
+# VC Generated Files #
+######################
+*.VC.db
+*.suo
+*.VC.opendb
+*.sln
