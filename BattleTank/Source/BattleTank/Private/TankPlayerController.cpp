@@ -26,11 +26,24 @@ void ATankPlayerController::BeginPlay()
 void ATankPlayerController::Tick( float DeltaTime ) 
 {
 	Super::Tick( DeltaTime );
-	//UE_LOG(LogTemp, Warning, TEXT("The Player Controller is Ticking"));
 	AimTowardsCrosshair();
 }
 
 void ATankPlayerController::AimTowardsCrosshair()
 {
+	FVector HitLocation; //Out parameter 
+	if (GetSightRayHitLocation(HitLocation))
+	{
 
+	}
+}
+
+bool ATankPlayerController::GetSightRayHitLocation(FVector& HitLocation)
+{
+	//Find crosshair location in pixel coordinates
+	int32 ViewportSizeX, ViewportSizeY;
+	GetViewportSize(ViewportSizeX, ViewportSizeY);
+	auto ScreenLocation = FVector2D(ViewportSizeX * CrosshairXLocation, ViewportSizeY * CrosshairYLocation);
+	UE_LOG(LogTemp, Warning, TEXT("Location: %s"), *ScreenLocation.ToString());
+	return true;
 }
