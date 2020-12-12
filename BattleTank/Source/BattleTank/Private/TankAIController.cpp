@@ -3,12 +3,20 @@
 #include "BattleTank.h"
 #include "TankAIController.h"
 
-
+void ATankAIController::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+	if (GetPlayerTank())
+	{
+		GetControllerTank()->AimAt(GetPlayerTank()->GetActorLocation());
+	}
+}
 
 void ATankAIController::BeginPlay()
 {
 	Super::BeginPlay();
 	auto PlayerPawn = GetPlayerTank();
+	//auto PlayerPawn = GetControllerTank();
 	if (!PlayerPawn)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("AI Controller don't possess Tank."));
